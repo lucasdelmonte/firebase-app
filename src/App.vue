@@ -208,6 +208,7 @@
       }
     }
   }
+
   .hover-underline {
     position: relative;
     &::after {
