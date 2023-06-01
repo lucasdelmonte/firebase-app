@@ -107,7 +107,7 @@
       grid-area: logo;
 
       svg {
-        width: 50px;
+        width: 5rem;
       }
     }
     &__title {
@@ -134,9 +134,9 @@
       transition: left 400ms cubic-bezier(0.46, 0.31, 0.1, 1);
       z-index: 5;
       background: white;
-      box-shadow: 8px 1px 16px -7px rgba(0,0,0,0.52);
-      -webkit-box-shadow: 8px 1px 16px -7px rgba(0,0,0,0.52);
-      -moz-box-shadow: 8px 1px 16px -7px rgba(0,0,0,0.52);
+      box-shadow: .8rem .1rem 1.6rem -.7rem rgba(0,0,0,0.52);
+      -webkit-box-shadow: .8rem .1rem 1.6rem -.7rem rgba(0,0,0,0.52);
+      -moz-box-shadow: .8rem .1rem 1.6rem -.7rem rgba(0,0,0,0.52);
 
       &[open="true"] {
         left: 0;
