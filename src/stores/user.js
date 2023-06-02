@@ -11,7 +11,8 @@ import { auth } from '../../firebaseConfig'
 export const useUserStore = defineStore('userStore', {
   state: () => ({
     userData: null,
-    loadingUser: false
+    loadingUser: false,
+    isLogged: false
   }),
   actions: {
     async loginUser(email, password) {
@@ -54,6 +55,7 @@ export const useUserStore = defineStore('userStore', {
       try {
         await signOut(auth)
         this.userData = null
+        this.isLogged = false
         router.push('/login')
       } catch (err) {
         return {
@@ -70,8 +72,10 @@ export const useUserStore = defineStore('userStore', {
                 email: user.email,
                 uid: user.uid,
               }
+              this.isLogged = true
             } else {
               this.userData = null
+              this.isLogged = false
             }
             resolve(user)
           },

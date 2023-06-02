@@ -29,9 +29,9 @@
         </div>
       </div>
       <ul class="nav__links">
-        <li class="hover-underline"><router-link to="/">Home</router-link></li>
-        <li class="hover-underline"><router-link to="/login">Login</router-link></li>
-        <li class="hover-underline"><router-link to="/register">Register</router-link></li>
+        <li class="hover-underline" v-if="userStore.isLogged"><router-link to="/">Home</router-link></li>
+        <li class="hover-underline" v-if="!userStore.isLogged"><router-link to="/login">Login</router-link></li>
+        <li class="hover-underline" v-if="!userStore.isLogged"><router-link to="/register">Register</router-link></li>
       </ul>
       <div class="nav__logout">
         <button @click="userStore.logoutUser()">Logout</button>
