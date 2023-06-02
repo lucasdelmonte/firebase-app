@@ -33,6 +33,10 @@
   align-items: center;
   gap: 0 1rem;
 }
+.fields .field--buttons {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
 .fields .field__label {
   font-family: MontserratBold;
   font-size: 1.4rem;
@@ -62,10 +66,8 @@
   font-size: 1.2rem;
   letter-spacing: 0.06rem;
 }
-.fields button[type=submit] {
+.fields .field__button {
   width: 100%;
-  max-width: 19rem;
-  color: #FFFFFF;
   padding: 1.7rem 0;
   border: none;
   font-family: MontserratBold;
@@ -73,11 +75,22 @@
   letter-spacing: 0.14rem;
   line-height: 1.8rem;
   margin-bottom: 0.4rem;
-  background: #000000;
   cursor: pointer;
+  max-width: none;
 }
-.fields button[type=submit][disabled] {
+.fields .field__button--primary {
+  color: #FFFFFF;
+  background: #000000;
+}
+.fields .field__button--primary[disabled] {
   background: rgba(0, 0, 0, 0.6);
+}
+.fields .field__button--secondary {
+  color: #000000;
+  background: #FFFFFF;
+}
+.fields .field__button--secondary[disabled] {
+  background: rgba(255, 255, 255, 0.6);
 }
 
 /*# sourceMappingURL=main.css.map */

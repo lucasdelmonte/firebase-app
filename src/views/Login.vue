@@ -21,7 +21,14 @@
             </svg>
             <span class="field__error">THESE CREDENTIALS DO NOT MATCH OUR RECORDS</span>
           </div>
-          <button type="submit" :disabled="userStore.loadingUser">LOGIN</button>
+          <div class="field field--buttons">
+            <button class="field__button field__button--primary" type="submit" :disabled="userStore.loadingUser">LOGIN</button>
+            <router-link to="/register">
+              <button class="field__button field__button--secondary">
+                REGISTER
+              </button>
+            </router-link>
+          </div>
         </div>
       </form>
     </div>
@@ -54,8 +61,8 @@
   .wrapper {
     max-width: 44rem;
     margin: auto;
-    height: calc(100vh - 7rem);
-
+    height: calc(100vh - 13rem);
+    overflow: hidden;
     display: grid;
     grid-template-columns: 1fr;
     place-content: center;

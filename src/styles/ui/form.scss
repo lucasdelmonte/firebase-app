@@ -13,6 +13,10 @@
       align-items: center;
       gap: 0 1rem;
     }
+    &--buttons {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+    }
     &__label {
       font-family: MontserratBold;
       font-size: 1.4rem;
@@ -42,23 +46,34 @@
       font-size: 1.2rem;
       letter-spacing: .06rem;
     }
-  }
-  button[type="submit"] {
-    width: 100%;
-    max-width: 19rem;
-    color: #FFFFFF;
-    padding: 1.7rem 0;
-    border: none;
-    font-family: MontserratBold;
-    font-size: 1.4rem;
-    letter-spacing: .14rem;
-    line-height: 1.8rem;
-    margin-bottom: .4rem;
-    background: #000000;
-    cursor: pointer;
+    &__button {
+      width: 100%;
+      padding: 1.7rem 0;
+      border: none;
+      font-family: MontserratBold;
+      font-size: 1.4rem;
+      letter-spacing: .14rem;
+      line-height: 1.8rem;
+      margin-bottom: .4rem;
+      cursor: pointer;
+      max-width: none;
 
-    &[disabled] {
-      background: rgba($color: #000000, $alpha: .6);
-    }
-  } 
+      &--primary {
+        color: #FFFFFF;
+        background: #000000;
+  
+        &[disabled] {
+          background: rgba($color: #000000, $alpha: .6);
+        }
+      }
+      &--secondary {
+        color: #000000;
+        background: #FFFFFF;
+  
+        &[disabled] {
+          background: rgba($color: #FFFFFF, $alpha: .6);
+        }
+      }
+    } 
+  }
 }

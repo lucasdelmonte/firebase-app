@@ -13,7 +13,7 @@
       <div class="header__logo">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 261.76 226.69"><path d="M161.096.001l-30.225 52.351L100.647.001H-.005l130.877 226.688L261.749.001z" fill="#41b883"/><path d="M161.096.001l-30.225 52.351L100.647.001H52.346l78.526 136.01L209.398.001z" fill="#34495e"/></svg>
       </div>
-      <h1 class="header__title">Pokepedia</h1>
+      <h1 class="header__title">Vue App</h1>
     </header>
     <div class="header__nav-close" @click="closeDrawer" v-if="openDrawer"></div>
     <nav class="nav header__nav" :open="openDrawer">
@@ -33,13 +33,16 @@
         <li class="hover-underline" v-if="!userStore.isLogged"><router-link to="/login">Login</router-link></li>
         <li class="hover-underline" v-if="!userStore.isLogged"><router-link to="/register">Register</router-link></li>
       </ul>
-      <div class="nav__logout">
+      <div class="nav__logout" v-if="userStore.isLogged">
         <button @click="userStore.logoutUser()">Logout</button>
       </div>
     </nav>
     <div class="page-width">
       <router-view></router-view>
     </div>
+    <footer class="footer">
+      <p class="footer__copyright">Designed & Developed by Lucas Delmonte | Copyright 2023</p>
+    </footer>
   </div>
 </template>
 
@@ -117,6 +120,7 @@
       justify-content: flex-end;
       align-items: center;
       font-family: MontserratMedium;
+      white-space: nowrap;
     }
     &__nav-close {
       position: fixed;
@@ -201,15 +205,35 @@
       }
     }
     &__logout {
-      border-top: .1rem solid #ECECEC;
       padding: 2rem 2.5rem;
+      background-color: #000000;
       button {
         border: none;
         background: transparent;
         font-size: 2rem;
         font-family: MontserratMedium;
+        color: #FFFFFF;
         cursor: pointer;
       }
+    }
+  }
+
+  .footer {
+    outline: .1rem solid #ECECEC;
+    min-height: 6rem;
+    max-height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__copyright {
+      font-family: MontserratRegular;
+      font-size: 1.4rem;
+      letter-spacing: .04rem;
+      color: #000000;
+      text-align: center;
+      padding: .5rem 2.5rem;
     }
   }
 </style>
