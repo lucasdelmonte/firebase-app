@@ -1,0 +1,83 @@
+.hover-underline {
+  position: relative;
+}
+.hover-underline::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.1rem;
+  bottom: 0.4rem;
+  left: 0;
+  background-color: #000000;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 250ms ease-out;
+}
+.hover-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem 0;
+}
+.fields .field {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.fields .field--error {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0 1rem;
+}
+.fields .field__label {
+  font-family: MontserratBold;
+  font-size: 1.4rem;
+  letter-spacing: 0.14rem;
+  line-height: 1.8rem;
+  margin-bottom: 0.4rem;
+}
+.fields .field__input {
+  font-family: MontserratRegular;
+  font-size: 1.6rem;
+  letter-spacing: 0;
+  line-height: 1.9rem;
+  border: 0.1rem solid #C7C2C0;
+  padding: 1.4rem 1.1rem;
+}
+.fields .field__input:focus {
+  border: 0.1rem solid #000000;
+}
+.fields .field__input:focus-visible {
+  outline: 0;
+}
+.fields .field__svg {
+  width: 1rem;
+}
+.fields .field__error {
+  font-family: MontserratMedium;
+  font-size: 1.2rem;
+  letter-spacing: 0.06rem;
+}
+.fields button[type=submit] {
+  width: 100%;
+  max-width: 19rem;
+  color: #FFFFFF;
+  padding: 1.7rem 0;
+  border: none;
+  font-family: MontserratBold;
+  font-size: 1.4rem;
+  letter-spacing: 0.14rem;
+  line-height: 1.8rem;
+  margin-bottom: 0.4rem;
+  background: #000000;
+  cursor: pointer;
+}
+.fields button[type=submit][disabled] {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/*# sourceMappingURL=main.css.map */

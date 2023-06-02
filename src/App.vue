@@ -13,7 +13,7 @@
       <div class="header__logo">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 261.76 226.69"><path d="M161.096.001l-30.225 52.351L100.647.001H-.005l130.877 226.688L261.749.001z" fill="#41b883"/><path d="M161.096.001l-30.225 52.351L100.647.001H52.346l78.526 136.01L209.398.001z" fill="#34495e"/></svg>
       </div>
-      <h1 class="header__title">Vue App</h1>
+      <h1 class="header__title">Pokepedia</h1>
     </header>
     <div class="header__nav-close" @click="closeDrawer" v-if="openDrawer"></div>
     <nav class="nav header__nav" :open="openDrawer">
@@ -34,7 +34,7 @@
         <li class="hover-underline"><router-link to="/register">Register</router-link></li>
       </ul>
       <div class="nav__logout">
-        <button>Logout</button>
+        <button @click="userStore.logoutUser()">Logout</button>
       </div>
     </nav>
     <div class="page-width">
@@ -45,7 +45,9 @@
 
 <script setup>
   import { ref } from 'vue'
+  import { useUserStore } from './stores/user'
 
+  const userStore = useUserStore()
   const openDrawer = ref(false)
 
   const toggleDrawer = (e) => {
@@ -65,14 +67,13 @@
   .header {
     margin: 0;
     display: grid;
-    grid-template-areas: 'drawer logo title';
+    grid-template-columns: minmax(3rem, .2fr) 1fr minmax(2rem, .2fr);
     justify-content: space-between;
     align-items: center;
     gap: 0 1rem;
     height: 7rem;
 
     &__drawer {
-      grid-area: drawer;
       width: 1.9rem;
       height: 1.5rem;
       display: flex;
@@ -104,14 +105,17 @@
       }
     }
     &__logo {
-      grid-area: logo;
-
+      display: flex;
+      justify-content: center;
+      align-items: center;
       svg {
         width: 5rem;
       }
     }
     &__title {
-      grid-area: title;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
       font-family: MontserratMedium;
     }
     &__nav-close {
@@ -206,26 +210,6 @@
         font-family: MontserratMedium;
         cursor: pointer;
       }
-    }
-  }
-
-  .hover-underline {
-    position: relative;
-    &::after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: .1rem;
-        bottom: .4rem;
-        left: 0;
-        background-color: #000000;
-        transform: scaleX(0);
-        transform-origin: bottom right;
-        transition: transform 250ms ease-out;
-    }
-    &:hover::after {
-        transform: scaleX(1);
-        transform-origin: bottom left;
     }
   }
 </style>

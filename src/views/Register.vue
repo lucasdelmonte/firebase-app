@@ -21,7 +21,7 @@
             </svg>
             <span class="field__error">ALL FIELDS ARE REQUIRED</span>
           </div>
-          <button type="submit">REGISTER</button>
+          <button type="submit" :disabled="userStore.loadingUser">REGISTER</button>
         </div>
       </form>
     </div>
@@ -37,10 +37,10 @@
   const password = ref('')
   const requiredFields = ref(true)
 
-  const handleSubmit = () => {
-    requiredFields.value = !email.value || !password.value.length < 6 ? false : true
-
-    userStore.registerUser(email.value, password.value)
+  const handleSubmit = async () => {
+    requiredFields.value = !email.value || password.value.length < 6 ? false : true
+    if(!requiredFields.value) return
+    await userStore.registerUser(email.value, password.value)
   }
 </script>
 
@@ -60,65 +60,5 @@
     grid-template-columns: 1fr;
     place-content: center;
     gap: 4rem 0;
-  }
-  .fields {
-    display: flex;
-    flex-direction: column;
-    gap: 1.8rem 0;
-
-    .field {
-      display: grid;
-      grid-template-columns: 1fr;
-
-      &--error {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 0 1rem;
-      }
-      &__label {
-        font-family: MontserratBold;
-        font-size: 1.4rem;
-        letter-spacing: .14rem;
-        line-height: 1.8rem;
-        margin-bottom: .4rem;
-      }
-      &__input {
-        font-family: MontserratRegular;
-        font-size: 1.6rem;
-        letter-spacing: 0;
-        line-height: 1.9rem;
-        border: .1rem solid #C7C2C0;
-        padding: 1.4rem 1.1rem;
-      }
-      &__input:focus {
-        border: .1rem solid #000000;
-      }
-      &__input:focus-visible {
-        outline: 0;
-      }
-      &__svg {
-        width: 1rem;
-      }
-      &__error {
-        font-family: MontserratMedium;
-        font-size: 1.2rem;
-        letter-spacing: .06rem;
-      }
-    }
-    button[type="submit"] {
-      width: 100%;
-      max-width: 19rem;
-      color: #FFFFFF;
-      padding: 1.7rem 0;
-      border: none;
-      font-family: MontserratBold;
-      font-size: 1.4rem;
-      letter-spacing: .14rem;
-      line-height: 1.8rem;
-      margin-bottom: .4rem;
-      background: #000000;
-      cursor: pointer;
-    } 
   }
 </style>
